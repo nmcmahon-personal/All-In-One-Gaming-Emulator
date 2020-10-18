@@ -1,19 +1,15 @@
 package me.niallmcmahon.aioemu.util;
 
 import javax.sound.sampled.*;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
+import java.net.URL;
 
 
 public class SoundPlayer {
 
     public static void playSound(String soundClipPath) {
         try {
-            Path menuChangeSoundPath = Paths.get(ClassLoader.getSystemResource(soundClipPath).toURI());
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(menuChangeSoundPath.toFile().getAbsoluteFile());
+            URL menuChangeSoundPath = ClassLoader.getSystemResource(soundClipPath);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(menuChangeSoundPath);
             Clip soundClip = AudioSystem.getClip();
             soundClip.addLineListener(lineListener);
             soundClip.open(audioInputStream);
@@ -23,12 +19,9 @@ public class SoundPlayer {
         }
     }
 
-    private static LineListener lineListener = new LineListener() {
-        @Override
-        public void update(LineEvent event) {
-            if(event.getType().equals(LineEvent.Type.STOP)) {
-                event.getLine().close();
-            }
+    private static LineListener lineListener = event -> {
+        if(event.getType().equals(LineEvent.Type.STOP)) {
+            event.getLine().close();
         }
     };
 }
