@@ -30,8 +30,8 @@ If the build is successful, the project can be ran using the .jar file that is o
 
 From the target directory, run the following command:
 
-`java -jar all-in-one-gaming-emulator-1.0-SNAPSHOT.jar`
+`java -jar all-in-one-gaming-emulator-1.0-SNAPSHOT-jar-with-dependencies.jar`
 
-NOTE: 1.0-Snapshot is an example version and is subject to change. If the name of the jar file in the target folder is different, update the command to suit.
+_**NOTE: 1.0-Snapshot is an example version and is subject to change. If the name of the jar file in the target folder is different, update the command to suit. Also ensure the jar selected ends with "-jar-with-dependencies"**_
 
 
