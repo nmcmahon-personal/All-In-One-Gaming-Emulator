@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class BackgroundImageJPanel extends JPanel {
 
